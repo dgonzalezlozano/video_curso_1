@@ -1,0 +1,1 @@
+VideoCurso de como implementar autenticación en Slim framework v3 según CodeCourse en Youtube.
