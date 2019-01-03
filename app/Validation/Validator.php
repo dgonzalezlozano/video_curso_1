@@ -8,12 +8,14 @@
 
     class Validator{
 
+        protected $errors;
+
         public function validate($request, Array $rules){
 
             foreach($rules as $field => $rule){
 
                 try{
-                    $rule->setName(ucfirst($field))->asset($request->getParam($field));
+                    $rule->setName(ucfirst($field))->assert($request->getParam($field));
                 }catch(NestedValidationException $e){
                     $this->errors[$field] = $e->getMessages();
                 }

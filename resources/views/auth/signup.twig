@@ -12,14 +12,12 @@
 
                 <div class="panel-body">
 
-                    {{ errors || json_encode }}
-
                     <form action="{{ path_for('auth.signup') }}" method="post" autocomplete="off">
 
                         <div class="form-group {{ errors.email ? 'has-error' : '' }}">
 
                             <label for="email">Email</label>
-                            <input type="text" name="email" id="email" placeholder="you@domain.com" class="form-control" autocomplete="off">
+                            <input type="text" name="email" id="email" placeholder="you@domain.com" class="form-control" autocomplete="off" value="{{ old.email }}">
                             {% if errors.email %}
                                 <span class="help-block">{{ errors.email | first }}</span>
                             {% endif %}
@@ -30,7 +28,7 @@
                         <div class="form-group {{ errors.name ? 'has-error' : '' }}">
 
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" class="form-control" autocomplete="off">
+                            <input type="text" name="name" id="name" class="form-control" autocomplete="off" value="{{ old.name }}">
                             {% if errors.name %}
                                 <span class="help-block">{{ errors.name | first }}</span>
                             {% endif %}
