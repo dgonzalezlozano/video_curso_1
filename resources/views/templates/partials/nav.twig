@@ -8,18 +8,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">CodeCourse</a>
+            <a class="navbar-brand" href="{{ path_for('home') }}">CodeCourse</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <!--<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>-->
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ path_for('home') }}">Home</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                {% if auth.check %}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mabel Garret <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth.user.name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -28,8 +29,10 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Sign up</a></li>
-                <li><a href="#">Sign in</a></li>
+                {% else %}
+                <li><a href="{{ path_for('auth.signup') }}">Sign up</a></li>
+                <li><a href="{{ path_for('auth.signin') }}">Sign in</a></li>
+                {% endif %}
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
