@@ -25,6 +25,7 @@
             );
 
             if(!$auth){
+                $this->flash->addMessage('error', 'No has podido entrar con estos datos');
                 return $response->withRedirect($this->router->pathFor('auth.signin'));
             }
 
@@ -53,6 +54,8 @@
                 'name' => $request->getParam('name'),
                 'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT)
             ]);
+
+            $this->flash->addMessage('info', 'Te has registrado con éxito!');
 
             $this->auth->attempt($user->email, $request->getParam('password'));
 

@@ -83,7 +83,7 @@
     };
 
     $container['flash'] = function($container){
-          return \Slim\Flash\Messages;
+          return new \Slim\Flash\Messages;
     };
 
     $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
