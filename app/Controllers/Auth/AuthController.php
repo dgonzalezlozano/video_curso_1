@@ -48,7 +48,7 @@
                 return $response->withRedirect($this->router->pathFor('auth.signup'));
             }
 
-            User::create([
+            $user = User::create([
                 'email' => $request->getParam('email'),
                 'name' => $request->getParam('name'),
                 'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT)

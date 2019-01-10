@@ -80,11 +80,16 @@
           return new \App\Auth\Auth;
     };
 
+    $container['flash'] = function($container){
+          return \Slim\Flash\Messages;
+    };
+
     $app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
+    $app->add(new \App\Middleware\CsrfViewMiddleware($container));
     $app->add(new \App\Middleware\OldInputMiddleware($container));
 
     $app->add($container->csrf);
 
-    v::with('App\\Validation\\Rules\\362');
+    v::with('App\\Validation\\Rules\\');
 
     require __DIR__ . '/../app/routes.php';
